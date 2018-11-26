@@ -17,11 +17,45 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+body {
+  background: rgb(21, 29, 41);
+}
 
 .App-link {
   color: #61dafb;
 }
 
+.pink {
+  color: #FF85A1;
+}
+
+.purple{
+  color: #8079E8;
+}
+
+.blue {
+  color: #92FFE2;
+}
+
+.green{
+  color: #D4E879;
+
+}
+
+button {
+  width: 110px;
+  height: 30px;
+  font-size: 20px;
+  margin: 10px;
+  background: white;
+  box-shadow: grey 2px 2px 3px;
+  border: none;
+  border-radius: 4px;
+}
+
+.orange {
+  color: #FFBF75
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

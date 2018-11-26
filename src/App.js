@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { increaseCount, decreaseCount, toggleSwitch, changeColour } from './actions/actions';
+import store from './store';
+import { COLOUR_OPTIONS } from "./actions/actions";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+
+const App = ({ counter, toggleOn, colours }) =>(
+        <div className={colours.colour.name}><h1>Counter: { counter.count }</h1>
+        <h2>Switch: { String( toggleOn.isSwitchOn ) }</h2>
+        <h2>Colour: {colours.colour.name}</h2>
+        <button  onClick= {function(){store.dispatch(increaseCount());}}>Increment</button>
+        <button onClick = {function(){store.dispatch(decreaseCount())}}>Decrement</button>
+        <button onClick= {function(){store.dispatch(toggleSwitch())}}>ON/OFF</button>
+        { COLOUR_OPTIONS.map((eachColour)=>{
+          return(
+          <button key={eachColour.name} onClick = {function(){store.dispatch(changeColour(eachColour))}} style={{background: eachColour.hex}}>{eachColour.name}</button>
+          )
+        })}
+        </div>
     );
-  }
+  
+const mapStateToProps = (state) => {
+  return state;
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
